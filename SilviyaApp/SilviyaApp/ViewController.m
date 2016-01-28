@@ -10,6 +10,7 @@
 
 @interface ViewController ()
 
+
 @end
 
 @implementation ViewController
@@ -18,7 +19,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVibrancyEffect *vibrancy=[UIVibrancyEffect effectForBlurEffect:blur];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    UIVisualEffectView *effectVibrancyView = [[UIVisualEffectView alloc]initWithEffect:vibrancy];
+    CGRect sizeValues=CGRectMake(0, 347, 768, 677);
+    effectView.frame = self.view.frame;
+    effectVibrancyView.frame = self.view.frame;
+    
+    // add the effect view to the image view
+    [self.imagePuppy addSubview:effectView];
+    [self.imagePuppy addSubview:effectVibrancyView];
 }
 
 - (void)didReceiveMemoryWarning {
